@@ -1,9 +1,9 @@
 # depslib dependency file v1.0
-1548013060 source:c:\users\pin\desktop\github\controllermovement\m2anim_tp_controleur\src\biped.cpp
+1548613070 source:c:\users\pin\desktop\github\controllermovement\m2anim_tp_controleur\src\biped.cpp
 	"Biped.h"
 	<iostream>
 
-1536852224 c:\users\pin\desktop\github\controllermovement\m2anim_tp_controleur\src\biped.h
+1548612205 c:\users\pin\desktop\github\controllermovement\m2anim_tp_controleur\src\biped.h
 	"Box2D/Box2D.h"
 	"PDController.h"
 	"FSM.h"
@@ -172,17 +172,17 @@
 
 1500544477 c:\users\pin\desktop\github\controllermovement\m2anim_tp_controleur\src\pdcontroller.h
 
-1531320798 c:\users\pin\desktop\github\controllermovement\m2anim_tp_controleur\src\fsm.h
+1548610266 c:\users\pin\desktop\github\controllermovement\m2anim_tp_controleur\src\fsm.h
 	<vector>
 
-1548012035 source:c:\users\pin\desktop\github\controllermovement\m2anim_tp_controleur\src\framework\application.cpp
+1548610514 source:c:\users\pin\desktop\github\controllermovement\m2anim_tp_controleur\src\framework\application.cpp
 	"Application.h"
 	<stdio.h>
 	<iostream>
 	<sstream>
 	<string>
 
-1548013193 c:\users\pin\desktop\github\controllermovement\m2anim_tp_controleur\src\framework\application.h
+1548612673 c:\users\pin\desktop\github\controllermovement\m2anim_tp_controleur\src\framework\application.h
 	"glew/glew.h"
 	"glfw/glfw3.h"
 	<stdlib.h>
@@ -247,7 +247,7 @@
 1498315432 c:\users\pin\desktop\github\controllermovement\m2anim_tp_controleur\box2d\src\imgui\imconfig.h
 	"Box2D/Common/b2Math.h"
 
-1548012901 source:c:\users\pin\desktop\github\controllermovement\m2anim_tp_controleur\src\framework\main.cpp
+1548611279 source:c:\users\pin\desktop\github\controllermovement\m2anim_tp_controleur\src\framework\main.cpp
 	<glew/glew.h>
 	"imgui/imgui.h"
 	"imgui/imgui_impl_glfw_gl3.h"
@@ -257,11 +257,12 @@
 	<stdio.h>
 	<fstream>
 	<iostream>
+	<cmath>
 	<crtdbg.h>
 
 1498315432 c:\users\pin\desktop\github\controllermovement\m2anim_tp_controleur\box2d\src\imgui\imgui_impl_glfw_gl3.h
 
-1547928136 source:c:\users\pin\desktop\github\controllermovement\m2anim_tp_controleur\src\fsm.cpp
+1548610419 source:c:\users\pin\desktop\github\controllermovement\m2anim_tp_controleur\src\fsm.cpp
 	"FSM.h"
 	<iostream>
 

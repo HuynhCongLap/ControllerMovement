@@ -53,4 +53,10 @@ public:
 	FSM_Walk();
 };
 
+
+class FSM_Jump : public FSM { // La machine à états finis pour un mouvement de saut
+public:
+	FSM_Jump();
+};
+
 #endif

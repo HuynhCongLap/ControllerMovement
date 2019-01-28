@@ -151,8 +151,9 @@ Biped::Biped (b2World* world) : m_world (world), m_hasFallen(false) { // Constru
         // Finite State Machine
         // ====================
         /// ============ TODO PARTIE I ============= ///
-        m_stateMachine = new FSM_Stand();
-        //m_stateMachine = new FSM_Walk();
+        //m_stateMachine = new FSM_Stand();
+        m_stateMachine = new FSM_Walk();
+        //m_stateMachine = new FSM_Run();
         /// ======================================== ///
 
 }
@@ -188,7 +189,7 @@ void Biped::update(double Dt, bool lc, bool rc) {
             while ( totalRotation >   b2_pi ) totalRotation -=  b2_pi*2;
             float desiredAngularVelocity = totalRotation * 60;
             float torque = m_bodies[j]->GetInertia() * desiredAngularVelocity / (1/60.0);
-          //body->ApplyTorque( torque );
+
             m_bodies[j]->ApplyTorque(m_motorTarget[j]*9,true );
         }
 
@@ -220,6 +221,12 @@ float Biped::sumAngleVelocity() const {
     return sum;
 }
 
+float Biped::symmetry() const {
+
+    std::cout<< m_positionCOM.x + m_positionCOM.y << std::endl;
+    return m_positionCOM.x + m_positionCOM.y ;
+}
+
 //====================== PRIVATE ============================//
 
 void Biped::computeCenterOfMass() {
@@ -249,14 +256,6 @@ void Biped::KeyPoseTracking () {
           m_PDControllers[j]->setTarget(targetAngles[j]);
           m_currentAnglesLocal[j] = m_bodies[j]->GetAngle();
           m_motorTarget[j] = m_PDControllers[j]->compute(m_currentAnglesLocal[j]);
-        // Affecter la cible au régulateur PD par setTarget
-
-        // Mise à jour de m_currentAnglesLocal par b2RevoluteJoint::GetJointAngle() (attention au signe et attention pour j==NB_ARTICULATIONS pas d'angle local)
-
-        // Mise à jour de m_currentAnglesGlobal par b2Body::GetTransform().q.GetAngle() avec l'équivalence d'indice d'articulation et de corps rigide (cf. énumérations)
-
-        // Calcul du moment à ajouter dans m_motorTarget grâce au régulateur PD et en fonction de si la cible est locale ou globale
-
         /// ========================================= ///
     }
 }

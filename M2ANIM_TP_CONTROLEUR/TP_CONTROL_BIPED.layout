@@ -2,44 +2,34 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="src\FSM.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\Biped.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="98" topLine="9" />
-		</Cursor>
-	</File>
-	<File name="src\FSM.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="9021" topLine="179" />
-		</Cursor>
-	</File>
-	<File name="src\PDController.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="0" topLine="9" />
-		</Cursor>
-	</File>
-	<File name="src\Biped.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="5725" topLine="114" />
-		</Cursor>
-	</File>
-	<File name="src\Framework\DebugDraw.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="0" topLine="72" />
-		</Cursor>
-	</File>
-	<File name="src\Framework\Application.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2935" topLine="96" />
-		</Cursor>
-	</File>
-	<File name="src\PDController.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="478" topLine="0" />
+			<Cursor1 position="1374" topLine="16" />
 		</Cursor>
 	</File>
 	<File name="src\Framework\Application.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="5383" topLine="130" />
+			<Cursor1 position="6705" topLine="405" />
+		</Cursor>
+	</File>
+	<File name="src\Biped.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="8818" topLine="207" />
+		</Cursor>
+	</File>
+	<File name="src\FSM.h" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2241" topLine="42" />
+		</Cursor>
+	</File>
+	<File name="src\Framework\Main.cpp" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="12758" topLine="352" />
+		</Cursor>
+	</File>
+	<File name="src\PDController.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="478" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="src\Framework\DebugDraw.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -47,14 +37,24 @@
 			<Cursor1 position="1633" topLine="42" />
 		</Cursor>
 	</File>
-	<File name="src\Biped.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\Framework\DebugDraw.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2288" topLine="25" />
+			<Cursor1 position="0" topLine="72" />
 		</Cursor>
 	</File>
-	<File name="src\Framework\Main.cpp" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\PDController.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="14321" topLine="386" />
+			<Cursor1 position="0" topLine="6" />
+		</Cursor>
+	</File>
+	<File name="src\Framework\Application.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2881" topLine="93" />
+		</Cursor>
+	</File>
+	<File name="src\FSM.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="10685" topLine="225" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

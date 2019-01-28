@@ -107,9 +107,10 @@ public:
 	float getCurrentCost() const {
 	    float sumTorque = m_biped->sumTorque();
 	    float sumVelo = m_biped->sumAngleVelocity();
+	    float symetry = m_biped->symmetry();
 	    float distance = m_walkDistance;
 
-	    return (sumTorque + sumVelo) - distance*50;
+	    return (sumTorque + sumVelo + symetry) - distance;
     }
 	/// ========================================== ///
 

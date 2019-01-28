@@ -7,7 +7,13 @@ using namespace std;
 float linear_interpolate (float x1, float x2, float y1, float y2) {
     /// ============ TODO PARTIE I ============= ///
     return x1 + ((y1/y2)*(x2-x1));
+    //return x1*(1-y1/y2) + x2*y1/y2;
     /// ======================================== ///
+}
+
+float cubic_interpolate (float x1, float x2, float y1, float y2) {
+    float t = y1/y2;
+    return (1-t)*(1-t)*(1-t) * x1 + 3*(1-t)*(1-t) * t * (x1 + (x2-x1)*3/7) + 3*(1-t)* t*t * (x1 + (x2-x1)*5/7) + t*t*t * x2;
 }
 
 FSM::FSM() { }
@@ -60,6 +66,32 @@ std::vector<float> FSM::getCurrentTargetAngles() const {
 FSM_Stand::FSM_Stand() {
     // La machine à états finis pour un mouvement stable debout
     // 1 état, toutes les articulation à zéro dans le monde
+
+    // La machine à états finis pour un mouvement stable debout
+    // 1 état, toutes les articulation à zéro dans le monde
+    m_nbStates = 1;
+    m_currentState = 0;
+    State s;
+    // ETAT 0 //
+    s.ID = 0;
+    s.nextState = 0;
+    s.contactState = DOUBLE_SUPPORT;
+    s.transitionOnTimeOrContact = true;
+    s.transitionTime = 0.0;
+    s.transitionContact = NONE;
+    s.targetAngles.clear(); s.targetLocal.clear();
+    s.targetAngles.push_back(0.0); s.targetLocal.push_back(false);  //CHEVILLE_GAUCHE
+    s.targetAngles.push_back(0.0); s.targetLocal.push_back(false);  //CHEVILLE_DROIT
+    s.targetAngles.push_back(0.0); s.targetLocal.push_back(false);  //GENOU_GAUCHE
+    s.targetAngles.push_back(0.0); s.targetLocal.push_back(false);  //GENOU_DROIT
+    s.targetAngles.push_back(0.0); s.targetLocal.push_back(false);  //HANCHE_GAUCHE
+    s.targetAngles.push_back(0.0); s.targetLocal.push_back(false);  //HANCHE_DROIT
+    s.targetAngles.push_back(0.0); s.targetLocal.push_back(false);  //TRONC
+    m_states.push_back(s);
+}
+
+FSM_Walk::FSM_Walk() {
+    /// ============ TODO PARTIE I ============= ///
     m_nbStates = 7;
     m_currentState = 0;
     State s;
@@ -193,28 +225,92 @@ FSM_Stand::FSM_Stand() {
     s.targetAngles.push_back(-0.1); s.targetLocal.push_back(true);  //TRONC
     m_states.push_back(s);
 
-
+   /// ========================================= ///
 }
 
-FSM_Walk::FSM_Walk() {
-    /// ============ TODO PARTIE I ============= ///
-    // m_nbStates = ...; // Nombre d'états finis
-    // m_currentState = ...; // Etat initial
-    // State s; // L'état à ajouter
-    // --- A répéter pour tous les états ---
-    //    s.ID = ...; // Le numéro de l'état
-    //    s.nextState = ...; // Le numéro de l'état suivant
-    //    s.contactState = ...; // Le type de contact de l'état (optionnel)
-    //    s.transitionOnTimeOrContact = ...; // true si transition basée sur le temps écoulé, faux si basé sur contact
-    //    s.transitionTime = ...; // Temps de transition (si basé sur transition)
-    //    s.transitionContact = ..; // Type de contact pour transition (si basé sur contact)
-    //    s.targetAngles.clear(); s.targetLocal.clear();
-    // --- --- A répéter pour toutes les articulations --- ---
-    //       s.targetAngles.push_back(...); s.targetLocal.push_back(...); // Angles et indicateur global/local
-    //    m_states.push_back(s);
 
-    // copie des premières valeurs dans m_anglesAtTransition
-    // for (unsigned int i=0;i<s.targetAngles.size();i++)
-    //    m_anglesAtTransition.push_back(m_states[m_currentState].targetAngles[i]);
+
+FSM_Jump::FSM_Jump() {
+    /// ============ TODO PARTIE I ============= ///
+    m_nbStates = 4;
+    m_currentState = 0;
+    State s;
+    float  t = 0.3;
+    // ETAT 0 //
+    s.ID = 0;
+    s.nextState = 1;
+    s.contactState = DOUBLE_SUPPORT;
+    s.transitionOnTimeOrContact = true;
+    s.transitionTime = t;
+    s.transitionContact = NONE;
+    s.targetAngles.clear(); s.targetLocal.clear();
+    s.targetAngles.push_back(0.0); s.targetLocal.push_back(true);  //CHEVILLE_GAUCHE
+    s.targetAngles.push_back(0.0); s.targetLocal.push_back(true);  //CHEVILLE_DROIT
+    s.targetAngles.push_back(0.0); s.targetLocal.push_back(true);  //GENOU_GAUCHE
+    s.targetAngles.push_back(0.0); s.targetLocal.push_back(true);  //GENOU_DROIT
+    s.targetAngles.push_back(0.0); s.targetLocal.push_back(true);  //HANCHE_GAUCHE
+    s.targetAngles.push_back(0.0); s.targetLocal.push_back(true);  //HANCHE_DROIT
+    s.targetAngles.push_back(0.0); s.targetLocal.push_back(true);  //TRONC
+    m_states.push_back(s);
+
+
+    for (unsigned int i=0;i<s.targetAngles.size();i++)
+         m_anglesAtTransition.push_back(m_states[m_currentState].targetAngles[i]);
+
+
+
+    s.ID = 1;
+    s.nextState = 2;
+    s.contactState = DOUBLE_SUPPORT;
+    s.transitionOnTimeOrContact = true;
+    s.transitionTime = t;
+    s.transitionContact = NONE;
+    s.targetAngles.clear(); s.targetLocal.clear();
+    s.targetAngles.push_back(0.0); s.targetLocal.push_back(true);  //CHEVILLE_GAUCHE
+    s.targetAngles.push_back(0.0); s.targetLocal.push_back(true);  //CHEVILLE_DROIT
+    s.targetAngles.push_back(-0.5); s.targetLocal.push_back(true);  //GENOU_GAUCHE
+    s.targetAngles.push_back(-0.5); s.targetLocal.push_back(true);  //GENOU_DROIT
+    s.targetAngles.push_back(0.3); s.targetLocal.push_back(true);  //HANCHE_GAUCHE
+    s.targetAngles.push_back(0.3); s.targetLocal.push_back(true);  //HANCHE_DROIT
+    s.targetAngles.push_back(0.0); s.targetLocal.push_back(true);  //TRONC
+    m_states.push_back(s);
+
+
+
+    s.ID = 2;
+    s.nextState = 3;
+    s.contactState = RIGHT_SUPPORT;
+    s.transitionOnTimeOrContact = true;
+    s.transitionTime = 2*t;
+    s.transitionContact = NONE;
+    s.targetAngles.clear(); s.targetLocal.clear();
+    s.targetAngles.push_back(0.0); s.targetLocal.push_back(true);  //CHEVILLE_GAUCHE
+    s.targetAngles.push_back(0.0); s.targetLocal.push_back(true);  //CHEVILLE_DROIT
+    s.targetAngles.push_back(-0.785); s.targetLocal.push_back(true);  //GENOU_GAUCHE
+    s.targetAngles.push_back(-0.785); s.targetLocal.push_back(true);  //GENOU_DROIT
+    s.targetAngles.push_back(1.57); s.targetLocal.push_back(true);  //HANCHE_GAUCHE
+    s.targetAngles.push_back(1.57); s.targetLocal.push_back(true);  //HANCHE_DROIT
+    s.targetAngles.push_back(0.0); s.targetLocal.push_back(true);  //TRONC
+    m_states.push_back(s);
+
+
+
+    s.ID = 3;
+    s.nextState = 0;
+    s.contactState = LEFT_SUPPORT;
+    s.transitionOnTimeOrContact = true;
+    s.transitionTime = 2*t;
+    s.transitionContact = NONE;
+    s.targetAngles.clear(); s.targetLocal.clear();
+    s.targetAngles.push_back(0.0); s.targetLocal.push_back(true);  //CHEVILLE_GAUCHE
+    s.targetAngles.push_back(0.0); s.targetLocal.push_back(true);  //CHEVILLE_DROIT
+    s.targetAngles.push_back(0.0); s.targetLocal.push_back(true);  //GENOU_GAUCHE
+    s.targetAngles.push_back(0.0); s.targetLocal.push_back(true);  //GENOU_DROIT
+    s.targetAngles.push_back(0.0); s.targetLocal.push_back(true);  //HANCHE_GAUCHE
+    s.targetAngles.push_back(0.0); s.targetLocal.push_back(true);  //HANCHE_DROIT
+    s.targetAngles.push_back(0.0); s.targetLocal.push_back(true);  //TRONC
+    m_states.push_back(s);
+
+
    /// ========================================= ///
 }

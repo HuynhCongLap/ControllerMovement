@@ -220,7 +220,7 @@ void Application::getOptimizationData(float * data) {
 
     du premier état de la machine à états à la première valeur du tableau
     */
-    for(int i=0; i<=6 ;i++)
+     for(int i=0; i<=6 ;i++)
         data[i] =  m_biped->getPDControllers()[i]->getKdGain();
 
 

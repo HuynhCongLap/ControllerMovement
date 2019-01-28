@@ -10,7 +10,7 @@
 #include <stdio.h>
 #include <fstream>
 #include <iostream>
-
+#include <cmath>
 #ifdef _MSC_VER
 #define snprintf _snprintf
 #endif
@@ -382,9 +382,15 @@ int main(int, char**) {
                         for (int i=0; i<m_optiData.nbParam; i++) {
                                 /// ============ TODO PARTIE III ============= ///
                                 // Signe aléatoire (ie. incrément ou décrément)
-                            float increse = RandomFloat(0.1,0.2);
-                            std::cout<<"Increse step: " << increse<< std::endl;
-                            m_optiData.currentParam[i] = m_optiData.bestParam[i]+increse;
+                            float s = RandomFloat(0,1);
+                            float p = m_optiData.currentParam[i];
+                            int ii =  m_optiData.nbIter;
+
+                            float val = exp(-ii*0.001) * p * s;
+                            float rand = RandomFloat(  -val ,  val );
+                            std::cout<<"Increse step: " << rand<< std::endl;
+
+                            m_optiData.currentParam[i] = m_optiData.bestParam[i]+rand;
                                 // Valeur max de l'incrément (diminue avec les itérations)
 
                                 // Incrément aléatoire (vous pouvez utiliser RandomFloat(a,b))

@@ -25,7 +25,7 @@ public:
 
 	float sumTorque() const;                                        // Retourne la somme des carrés des moments articulaires appliqués (pour l'optimisation)
 	float sumAngleVelocity() const;                                 // Retourne la somme des vitesses angulaires absolues (pour l'optimisation)
-
+    float symmetry() const;
 protected:
 
     b2World             *	m_world;                            // Le monde physique
